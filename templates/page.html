@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en-US">
 <head>
 	<meta charset="utf-8">
 	<script type="text/javascript">
@@ -8,7 +8,7 @@
 	{% include 'header.html' %}
 	<title>{{ title }}</title>
 </head>
-<body class="8chan vichan {% if mod %}is-moderator{% else %}is-not-moderator{% endif %} active-page" data-stylesheet="{% if config.default_stylesheet.1 != '' %}{{ config.default_stylesheet.1 }}{% else %}default{% endif %}">
+<body class="arisuchan {% if mod %}is-moderator{% else %}is-not-moderator{% endif %} active-page" data-stylesheet="{% if config.default_stylesheet.1 != '' %}{{ config.default_stylesheet.1 }}{% else %}default{% endif %}">
         {{ boardlist.top }}
 
 	{% if pm %}<div class="top_notice">You have <a href="?/PM/{{ pm.id }}">an unread PM</a>{% if pm.waiting > 0 %}, plus {{ pm.waiting }} more waiting{% endif %}.</div><hr>{% endif %}
@@ -23,11 +23,10 @@
 	</header>
 	{{ body }}
 	<hr>
-	<footer>
-		<p class="unimportant" style="margin-top:20px;text-align:center;">- Tinyboard + 
-			<a href="https://engine.vichan.net/">vichan</a> {{ config.version }} -
-		<br>Tinyboard Copyright &copy; 2010-2014 Tinyboard Development Group    
-		<br><a href="https://engine.vichan.net/">vichan</a> Copyright &copy; 2012-2016 vichan-devel</p>
-	</footer>
+    <footer>
+        <p class="unimportant">Tinyboard + <a href="https://engine.vichan.net/">vichan</a> + <a href="https://github.com/arisu-dev/arisuchan">arisuchan</a>
+        <br>Tinyboard Copyright &copy; 2010-2014 Tinyboard Development Group <a href="https://engine.vichan.net/">vichan</a> Copyright &copy; 2012-2016 vichan-devel <a href="https://github.com/arisu-dev/arisuchan">arisuchan</a> Copyright &copy; 2017 arisu-dev</p>
+        {% for footer in config.footer %}<p class="unimportant">{{ footer }}</p>{% endfor %}
+    </footer>
 </body>
 </html>

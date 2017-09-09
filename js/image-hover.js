@@ -1,4 +1,4 @@
-/* image-hover.js 
+/* image-hover.js
  * This script is copied almost verbatim from https://github.com/Pashe/8chanX/blob/2-0/8chan-x.user.js
  * All I did was remove the sprintf dependency and integrate it into 8chan's Options as opposed to Pashe's.
  * I also changed initHover() to also bind on new_post.
@@ -9,7 +9,7 @@ if (active_page === "catalog" || active_page === "thread" || active_page === "in
 $(document).on('ready', function(){
 
 if (window.Options && Options.get_tab('general')) {
-	Options.extend_tab("general", 
+	Options.extend_tab("general",
 	"<fieldset><legend>Image hover</legend>"
 	+ ("<label class='image-hover' id='imageHover'><input type='checkbox' /> "+_('Image hover')+"</label>")
 	+ ("<label class='image-hover' id='catalogImageHover'><input type='checkbox' /> "+_('Image hover on catalog')+"</label>")
@@ -65,21 +65,21 @@ function getSetting(key) {
 
 function initImageHover() { //Pashe, influenced by tux, et al, WTFPL
 	if (!getSetting("imageHover") && !getSetting("catalogImageHover")) {return;}
-	
+
 	var selectors = [];
-	
+
 	if (getSetting("imageHover")) {selectors.push("img.post-image", "canvas.post-image");}
 	if (getSetting("catalogImageHover") && isOnCatalog()) {
 		selectors.push(".thread-image");
 		$(".theme-catalog div.thread").css("position", "inherit");
 	}
-	
+
 	function bindEvents(el) {
 		$(el).find(selectors.join(", ")).each(function () {
 			if ($(this).parent().data("expanded")) {return;}
-			
+
 			var $this = $(this);
-			
+
 			$this.on("mousemove", imageHoverStart);
 			$this.on("mouseout",  imageHoverEnd);
 			$this.on("click",     imageHoverEnd);
@@ -94,7 +94,7 @@ function initImageHover() { //Pashe, influenced by tux, et al, WTFPL
 
 function imageHoverStart(e) { //Pashe, anonish, WTFPL
 	var hoverImage = $("#chx_hoverImage");
-	
+
 	if (hoverImage.length) {
 		if (getSetting("imageHoverFollowCursor")) {
 			var scrollTop = $(window).scrollTop();
@@ -102,13 +102,13 @@ function imageHoverStart(e) { //Pashe, anonish, WTFPL
 			var imgTop = imgY;
 			var windowWidth = $(window).width();
 			var imgWidth = hoverImage.width() + e.pageX;
-			
+
 			if (imgY < scrollTop + 15) {
 				imgTop = scrollTop;
 			} else if (imgY > scrollTop + $(window).height() - hoverImage.height() - 15) {
 				imgTop = scrollTop + $(window).height() - hoverImage.height() - 15;
 			}
-			
+
 			if (imgWidth > windowWidth) {
 				hoverImage.css({
 					'left': (e.pageX + (windowWidth - imgWidth)),
@@ -120,15 +120,15 @@ function imageHoverStart(e) { //Pashe, anonish, WTFPL
 					'top' : imgTop,
 				});
 			}
-			
+
 			hoverImage.appendTo($("body"));
 		}
-		
+
 		return;
 	}
-	
+
 	var $this = $(this);
-	
+
 	var fullUrl;
 	if ($this.parent().attr("href").match("src")) {
 		fullUrl = $this.parent().attr("href");
@@ -136,9 +136,9 @@ function imageHoverStart(e) { //Pashe, anonish, WTFPL
 		fullUrl = $this.attr("data-fullimage");
 		if (!isImage(getFileExtension(fullUrl))) {fullUrl = $this.attr("src");}
 	}
-	
+
 	if (isVideo(getFileExtension(fullUrl))) {return;}
-	
+
 	hoverImage = $('<img id="chx_hoverImage" src="'+fullUrl+'" />');
 
 	if (getSetting("imageHoverFollowCursor")) {

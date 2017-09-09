@@ -1,4 +1,4 @@
-<?php 
+<?php
 /* This file is dedicated to the public domain; you may do as you wish with it. */
 $v = @(string)$_GET['v'];
 $t = @(string)$_GET['t'];
@@ -20,7 +20,7 @@ $params = '?v=' . urlencode($v) . '&amp;t=' . urlencode($t);
         <a id="loop1" href="<?php echo $params; ?>&amp;loop=1"<?php if ($loop) echo ' style="font-weight: bold"'; ?>>[loop]</a>
     </div>
     <div id="playercontent">
-        <video controls<?php if ($loop) echo ' loop'; ?> src="<?php echo htmlspecialchars($v); ?>">
+        <video controls src="<?php echo htmlspecialchars($v); ?>">
             Your browser does not support HTML5 video. <a href="<?php echo htmlspecialchars($v); ?>">[Download]</a>
         </video>
     </div>

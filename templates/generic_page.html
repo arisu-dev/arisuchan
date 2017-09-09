@@ -1,12 +1,12 @@
 <!doctype html>
-<html>
+<html lang="en-US">
 <head>
 	{% block head %}
 	{% include 'header.html' %}
 	<title>{{ board.url }} - {{ board.name }}</title>
 	{% endblock %}
 </head>
-<body class="8chan vichan {% if mod %}is-moderator{% else %}is-not-moderator{% endif %}" data-stylesheet="{% if config.default_stylesheet.1 != '' %}{{ config.default_stylesheet.1 }}{% else %}default{% endif %}">	
+<body class="arisuchan {% if mod %}is-moderator{% else %}is-not-moderator{% endif %}" data-stylesheet="{% if config.default_stylesheet.1 != '' %}{{ config.default_stylesheet.1 }}{% else %}default{% endif %}">
 	{{ boardlist.top }}
 	{% if pm %}<div class="top_notice">You have <a href="?/PM/{{ pm.id }}">an unread PM</a>{% if pm.waiting > 0 %}, plus {{ pm.waiting }} more waiting{% endif %}.</div><hr />{% endif %}
 	{% if config.url_banner %}<img class="banner" src="{{ config.url_banner }}" {% if config.banner_width or config.banner_height %}style="{% if config.banner_width %}width:{{ config.banner_width }}px{% endif %};{% if config.banner_width %}height:{{ config.banner_height }}px{% endif %}" {% endif %}alt="" />{% endif %}
@@ -19,10 +19,10 @@
 			{% if mod %}<p><a href="?/">{% trans %}Return to dashboard{% endtrans %}</a></p>{% endif %}
 		</div>
 	</header>
-	
+
 	{% include 'attention_bar.html' %}
 	{% include 'post_form.html' %}
-	
+
 	{% if config.global_message %}<hr /><div class="blotter">{{ config.global_message }}</div>{% endif %}
 	<hr />
 	<form name="postcontrols" action="{{ config.post_url }}" method="post">
@@ -35,13 +35,11 @@
 		 [<a {% if page.selected %}class="selected"{% endif %}{% if not page.selected %}href="{{ page.link }}"{% endif %}>{{ page.num }}</a>]{% if loop.last %} {% endif %}
 	{% endfor %} {{ btn.next }}</div>
 	{{ boardlist.bottom }}
-	<footer>
-		<p class="unimportant" style="margin-top:20px;text-align:center;">- Tinyboard + 
-			<a href="https://engine.vichan.net/">vichan</a> {{ config.version }} -
-		<br>Tinyboard Copyright &copy; 2010-2014 Tinyboard Development Group    
-		<br><a href="https://engine.vichan.net/">vichan</a> Copyright &copy; 2012-2016 vichan-devel</p>
-		{% for footer in config.footer %}<p class="unimportant" style="text-align:center;">{{ footer }}</p>{% endfor %}
-	</footer>
+    <footer>
+        <p class="unimportant">Tinyboard + <a href="https://engine.vichan.net/">vichan</a> + <a href="https://github.com/arisu-dev/arisuchan">arisuchan</a>
+        <br>Tinyboard Copyright &copy; 2010-2014 Tinyboard Development Group <a href="https://engine.vichan.net/">vichan</a> Copyright &copy; 2012-2016 vichan-devel <a href="https://github.com/arisu-dev/arisuchan">arisuchan</a> Copyright &copy; 2017 arisu-dev</p>
+        {% for footer in config.footer %}<p class="unimportant">{{ footer }}</p>{% endfor %}
+    </footer>
 	<script type="text/javascript">{% raw %}
 		ready();
 	{% endraw %}</script>

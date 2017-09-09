@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en-US">
 <head>
 	<meta charset="utf-8">
 
@@ -23,7 +23,7 @@
 
 	<title>{{ board.url }} - {{ meta_subject }}</title>
 </head>
-<body class="8chan vichan {% if mod %}is-moderator{% else %}is-not-moderator{% endif %} active-thread" data-stylesheet="{% if config.default_stylesheet.1 != '' %}{{ config.default_stylesheet.1 }}{% else %}default{% endif %}">
+<body class="arisuchan {% if mod %}is-moderator{% else %}is-not-moderator{% endif %} active-thread" data-stylesheet="{% if config.default_stylesheet.1 != '' %}{{ config.default_stylesheet.1 }}{% else %}default{% endif %}">
 	{{ boardlist.top }}
 	<a name="top"></a>
 	{% if pm %}<div class="top_notice">You have <a href="?/PM/{{ pm.id }}">an unread PM</a>{% if pm.waiting > 0 %}, plus {{ pm.waiting }} more waiting{% endif %}.</div><hr />{% endif %}
@@ -55,9 +55,9 @@
 	<form name="postcontrols" action="{{ config.post_url }}" method="post">
 		<input type="hidden" name="board" value="{{ board.uri }}" />
 		{% if mod %}<input type="hidden" name="mod" value="1" />{% endif %}
-		
+
 		{{ body }}
-		
+
 		<div id="thread-interactions">
 			<span id="thread-links">
 				<a id="thread-return" href="{{ return }}">[{% trans %}Return{% endtrans %}]</a>
@@ -66,29 +66,27 @@
 					<a id="thread-catalog" href="{{ config.root }}{{ board.dir }}{{ config.catalog_link }}">[{% trans %}Catalog{% endtrans %}]</a>
 		                {% endif %}
 			</span>
-			
+
 			<span id="thread-quick-reply">
 				<a id="link-quick-reply" href="#">[{% trans %}Post a Reply{% endtrans %}]</a>
 			</span>
-			
+
 			{% include 'report_delete.html' %}
 		</div>
-		
+
 		<div class="clearfix"></div>
 	</form>
-	
+
 	<a name="bottom"></a>
 	{{ boardlist.bottom }}
 
 	{{ config.ad.bottom }}
 
-	<footer>
-		<p class="unimportant" style="margin-top:20px;text-align:center;">- Tinyboard + 
-			<a href="https://engine.vichan.net/">vichan</a> {{ config.version }} -
-		<br>Tinyboard Copyright &copy; 2010-2014 Tinyboard Development Group    
-		<br><a href="https://engine.vichan.net/">vichan</a> Copyright &copy; 2012-2016 vichan-devel</p>
-		{% for footer in config.footer %}<p class="unimportant" style="text-align:center;">{{ footer }}</p>{% endfor %}
-	</footer>
+    <footer>
+        <p class="unimportant">Tinyboard + <a href="https://engine.vichan.net/">vichan</a> + <a href="https://github.com/arisu-dev/arisuchan">arisuchan</a>
+        <br>Tinyboard Copyright &copy; 2010-2014 Tinyboard Development Group <a href="https://engine.vichan.net/">vichan</a> Copyright &copy; 2012-2016 vichan-devel <a href="https://github.com/arisu-dev/arisuchan">arisuchan</a> Copyright &copy; 2017 arisu-dev</p>
+        {% for footer in config.footer %}<p class="unimportant">{{ footer }}</p>{% endfor %}
+    </footer>
 	<script type="text/javascript">{% raw %}
 		ready();
 	{% endraw %}</script>
