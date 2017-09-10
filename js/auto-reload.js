@@ -24,7 +24,7 @@ $(document).ready(function(){
 	if($('div.banner').length == 0)
 		return; // not index
 		
-	if($(".post.op").size() != 1)
+	if($(".post.op").length != 1)
 		return; //not thread page
 	
 	var countdown_interval;
