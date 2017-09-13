@@ -1355,8 +1355,10 @@ function mod_move($originBoard, $postID) {
 			if ($post['has_file']) {
 				// copy image
 				foreach ($post['files'] as $i => &$file) {
-					$clone($file['file_path'], sprintf($config['board_path'], $board['uri']) . $config['dir']['img'] . $file['file']);
-					$clone($file['thumb_path'], sprintf($config['board_path'], $board['uri']) . $config['dir']['thumb'] . $file['thumb']);
+					if ($file['file'] !== 'deleted') //if file exists, process it
+						$clone($file['file_path'], sprintf($config['board_path'], $board['uri']) . $config['dir']['img'] . $file['file']);
+					if (isset($file['thumb']) && !in_array($file['thumb'], array('spoiler', 'deleted', 'file'))) //if thumb is not spceial, process it's file
+						$clone($file['thumb_path'], sprintf($config['board_path'], $board['uri']) . $config['dir']['thumb'] . $file['thumb']);
 				}
 			}
 			// insert reply
