@@ -130,7 +130,22 @@
 				{% trans %}File{% endtrans %}
 			</th>
 			<td>
-				<input type="file" name="file" id="upload_file">
+				{% for fileNum in 1..config.max_images %}
+				<div data-ac-filenum="{{fileNum}}"
+					 style="{{fileNum==1?'':'display:none;'}}">
+					<input type="file"
+						name="file{{fileNum==1?'':fileNum}}"
+						id="upload_file"
+						data-ac-filenum="{{fileNum}}">
+						{% if fileNum < config.max_images %}
+					<a class="file_add"> + </a>
+						{% endif %}
+						{% if fileNum > 1 %}
+					<a class="file_rm"> - </a>
+						{% endif %}
+					<br class="file_separator" />
+				</div>
+				{% endfor %}
 
 				<script type="text/javascript">if (typeof init_file_selector !== 'undefined') init_file_selector({{ config.max_images }});</script>
 
