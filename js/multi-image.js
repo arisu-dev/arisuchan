@@ -20,17 +20,19 @@ function multi_image() {
         var fileNum = $(ev.currentTarget).parent().data('ac-filenum');
         var images_len = $('*[data-ac-filenum]').length;
         if (fileNum != images_len)
-            $('*[data-ac-filenum='+(fileNum+1)+']').show();
+            $('div[data-ac-filenum='+(fileNum+1)+']').show();
         ev.preventDefault();
     });
 
     $('a.file_rm').click(function(ev) {
         var fileNum = $(ev.currentTarget).parent().data('ac-filenum');
-        if (fileNum != 1)
-            $('*[data-ac-filenum='+(fileNum-1)+']').hide();
-        console.debug("Hiding: ", ev.currentTarget, fileNum-1);
+        if (fileNum != 1){
+            $('div[data-ac-filenum='+(fileNum)+']').children('input[type=file]').val(undefined);
+            $('div[data-ac-filenum='+(fileNum)+']').hide();
+        }
         ev.preventDefault();
     });
+
 
     // $(document).on('click', 'a.add_image', function(e) {
     //     e.preventDefault();
