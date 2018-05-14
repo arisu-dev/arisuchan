@@ -7,6 +7,7 @@
 	{% endblock %}
 </head>
 <body class="arisuchan {% if mod %}is-moderator{% else %}is-not-moderator{% endif %}" data-stylesheet="{% if config.default_stylesheet.1 != '' %}{{ config.default_stylesheet.1 }}{% else %}default{% endif %}">
+    <?php include '/header.php';?>
 	{{ boardlist.top }}
 	{% if pm %}<div class="top_notice">You have <a href="?/PM/{{ pm.id }}">an unread PM</a>{% if pm.waiting > 0 %}, plus {{ pm.waiting }} more waiting{% endif %}.</div><hr />{% endif %}
 	{% if config.url_banner %}<img class="banner" src="{{ config.url_banner }}" {% if config.banner_width or config.banner_height %}style="{% if config.banner_width %}width:{{ config.banner_width }}px{% endif %};{% if config.banner_width %}height:{{ config.banner_height }}px{% endif %}" {% endif %}alt="" />{% endif %}
@@ -35,11 +36,7 @@
 		 [<a {% if page.selected %}class="selected"{% endif %}{% if not page.selected %}href="{{ page.link }}"{% endif %}>{{ page.num }}</a>]{% if loop.last %} {% endif %}
 	{% endfor %} {{ btn.next }}</div>
 	{{ boardlist.bottom }}
-    <footer>
-        <p class="unimportant">Tinyboard + <a href="https://engine.vichan.net/">vichan</a> + <a href="https://github.com/arisu-dev/arisuchan">arisuchan</a>
-        <br>Tinyboard Copyright &copy; 2010-2014 Tinyboard Development Group <a href="https://engine.vichan.net/">vichan</a> Copyright &copy; 2012-2016 vichan-devel <a href="https://github.com/arisu-dev/arisuchan">arisuchan</a> Copyright &copy; 2017 arisu-dev</p>
-        {% for footer in config.footer %}<p class="unimportant">{{ footer }}</p>{% endfor %}
-    </footer>
+    {% include 'footer.html' %}
 	<script type="text/javascript">{% raw %}
 		ready();
 	{% endraw %}</script>

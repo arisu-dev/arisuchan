@@ -74,7 +74,7 @@
 						{{ config.board_abbreviation|sprintf(ban.board) }}
 					{% else %}
 						<em>{% trans 'all boards' %}</em>
-					{% endif %}					
+					{% endif %}
 				</td>
 				<td style="white-space: nowrap">
 					<span title="{{ ban.created|date(config.post_date) }}">
@@ -113,7 +113,7 @@
 							{% if mod|hasPermission(config.mod.view_banquestionmark) %}
 								<em>?</em>
 							{% else %}
-						
+
 							{% endif %}
 						{% endif %}
 					{% elseif ban.creator == -1 %}
@@ -224,7 +224,7 @@
 							<a class="email" href="mailto:{{ post.email }}">
 						{% endif %}
 						{% set capcode = post.capcode|capcode %}
-						<span {% if capcode.name %}style="{{ capcode.name }}" {% endif %}class="name">{{ post.name|e }}</span>
+						<span {% if capcode.name %}style="{{ capcode.name }}" {% endif %}class="name">{{ post.name }}</span>
 						{% if post.trip|length > 0 %}
 							<span {% if capcode.trip %}style="{{ capcode.trip }}" {% endif %}class="trip">{{ post.trip }}</span>
 						{% endif %}
@@ -239,7 +239,7 @@
 				</td>
 				<td style="max-width:250px">
 					{% if post.subject %}
-						<small>{{ post.subject|e }}</small>
+						<small>{{ post.subject }}</small>
 					{% else %}
 						&ndash;
 					{% endif %}
@@ -262,7 +262,7 @@
 {% if result_count > results|count %}
 	<p class="unimportant" style="text-align:center;word-wrap:break-word">
 		{% for i in range(0, (result_count - 1) / config.mod.search_page) %}
-			<a href="?/search/{{ search_type }}/{{ search_query_escaped }}/{{ i + 1 }}">[{{ i + 1 }}]</a> 
+			<a href="?/search/{{ search_type }}/{{ search_query_escaped }}/{{ i + 1 }}">[{{ i + 1 }}]</a>
 		{% endfor %}
 	</p>
 {% endif %}
