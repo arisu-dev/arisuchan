@@ -36,13 +36,15 @@ if (active_page == 'catalog') $(function(){
 		$('#image_size').val(catalog.image_size).trigger('change');
 	}
 
-	$('div.thread').on('click', function(e) {
-		if ($(this).css('overflow-y') === 'hidden') {
-			$(this).css('overflow-y', 'auto');
-			$(this).css('width', '100%');
-		} else {
-			$(this).css('overflow-y', 'hidden');
-			$(this).css('width', 'auto');
-		}
-	});
+// disabling show/hide thread functionality for visual compatibility with new arisuchan css
+
+//	$('div.thread').on('click', function(e) {
+//		if ($(this).css('overflow-y') === 'hidden') {
+//			$(this).css('overflow-y', 'auto');
+//			$(this).css('width', '100%');
+//		} else {
+//			$(this).css('overflow-y', 'hidden');
+//			$(this).css('width', 'auto');
+//		}
+//	});
 });
