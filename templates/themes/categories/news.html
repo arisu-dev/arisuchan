@@ -1,41 +1,35 @@
 {% filter remove_whitespace %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US">
-<head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title>{{ settings.title }}</title>
-	<link rel="stylesheet" media="screen" href="{{ config.url_stylesheet }}"/>
-</head>
-<body>
-	{{ boardlist.top }}
-	<header>
-		<h1>{{ settings.title }}</h1>
-		<div class="subtitle">{{ settings.subtitle }}</div>
-	</header>
-
-	<div class="ban">
-		{% if news|count == 0 %}
-			<p style="text-align:center" class="unimportant">{% trans %}(No news to show.){% endtrans %}</p>
-		{% else %}
-			{% for entry in news %}
-				<h2 id="{{ entry.id }}">
-					{% if entry.subject %}
-						{{ entry.subject }}
-					{% else %}
-						<em>{% trans %}no subject{% endtrans %}</em>
-					{% endif %}
-					<span class="unimportant"> &mdash; {% trans %}by{% endtrans %} {{ entry.name }} {% trans %}at{% endtrans %} {{ entry.time|date(config.post_date) }}</span>
-				</h2>
-				<p>{{ entry.body }}</p>
-			{% endfor %}
-		{% endif %}
-	</div>
-
-    <footer>
-        <p class="unimportant">Tinyboard + <a href="https://engine.vichan.net/">vichan</a> + <a href="https://github.com/arisu-dev/arisuchan">arisuchan</a>
-        <br>Tinyboard Copyright &copy; 2010-2014 Tinyboard Development Group <a href="https://engine.vichan.net/">vichan</a> Copyright &copy; 2012-2016 vichan-devel <a href="https://github.com/arisu-dev/arisuchan">arisuchan</a> Copyright &copy; 2017 arisu-dev</p>
-        {% for footer in config.footer %}<p class="unimportant">{{ footer }}</p>{% endfor %}
-    </footer>
-</body>
+  <head>
+    <title>{{ settings.title }}</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" media="screen" href="{{ config.url_stylesheet }}">
+  </head>
+  <body>
+    {{ boardlist.top }}
+    <header>
+      <h1>{{ settings.title }}</h1>
+      <div class="subtitle">{{ settings.subtitle }}</div>
+    </header>
+    <div class="ban">
+      {% if news|count == 0 %}
+        <p class="unimportant text-align-center">{% trans %}(No news to show.){% endtrans %}</p>
+      {% else %}
+        {% for entry in news %}
+          <h2 id="{{ entry.id }}">
+            {% if entry.subject %}
+              {{ entry.subject }}
+            {% else %}
+              <em>{% trans %}no subject{% endtrans %}</em>
+            {% endif %}
+            <span class="unimportant"> &mdash; {% trans %}by{% endtrans %} {{ entry.name }} {% trans %}at{% endtrans %} {{ entry.time|date(config.post_date) }}</span>
+          </h2>
+          <p>{{ entry.body }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% include 'footer.html' %}
+  </body>
 </html>
 {% endfilter %}
