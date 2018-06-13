@@ -15,7 +15,7 @@ class CzaksCaptcha {
     $this->height = $top;
 
     $this->charset = preg_split('//u', $charset);
-    
+
     $this->style = "";
 
     for ($i = 0; $i < $len; $i++) {
@@ -76,12 +76,12 @@ class CzaksCaptcha {
     if ($a === false) {
       $a = &$this->content;
     }
-  
+
     shuffle($a);
 
     foreach ($a as &$v) {
       $this->shuffle_assoc($v);
-      
+
       if (is_array ($v[0])) {
         $this->randomize($v[0]);
       }
@@ -96,7 +96,7 @@ class CzaksCaptcha {
 
       $elem['top'] = rand(0, $this->height);
       $elem['left'] = rand(0, $this->width);
-      
+
       $elem['position'] = 'absolute';
 
       $elem[0] = $this->charset[rand(0, count($this->charset)-1)];
@@ -129,7 +129,7 @@ class CzaksCaptcha {
       $this->content[] = $elem;
     }
   }
-  
+
   function mutate_anchors() {
     foreach ($this->content as &$elem) {
       if (rand(0,1)) {
@@ -142,7 +142,7 @@ class CzaksCaptcha {
       }
     }
   }
-  
+
   function mutate_containers() {
     for ($i = 0; $i <= 80; $i++) {
       $new = [];
@@ -152,82 +152,82 @@ class CzaksCaptcha {
       $new['bottom'] = $this->height - ($new['top'] + $new['height']);
       $new['left'] = rand(-$this->width * 2, $this->width * 2);
       $new['right'] = $this->width - ($new['left'] + $new['width']);
-      
+
       $new['position'] = 'absolute';
 
       $new[0] = [];
-      
+
       $cnt = rand(0,10);
       for ($j = 0; $j < $cnt; $j++) {
         $elem = array_pop($this->content);
         if (!$elem) break;
-        
+
         if (isset($elem['top'])) $elem['top'] -= $new['top'];
         if (isset($elem['bottom'])) $elem['bottom'] -= $new['bottom'];
         if (isset($elem['left'])) $elem['left'] -= $new['left'];
         if (isset($elem['right'])) $elem['right'] -= $new['right'];
-        
+
         $new[0][] = $elem;
       }
-      
+
       if (rand (0,1)) unset($new['top']);
                  else unset($new['bottom']);
       if (rand (0,1)) unset($new['left']);
                  else unset($new['right']);
-                 
+
       $this->content[] = $new;
-      
+
       shuffle($this->content);
     }
   }
-  
+
   function mutate_margins(&$a = false) {
     if ($a === false) {
       $a = &$this->content;
     }
-    
+
     foreach ($a as &$v) {
       $ary = ['top', 'left', 'bottom', 'right'];
       shuffle($ary);
       $cnt = rand(0,4);
       $ary = array_slice($ary, 0, $cnt);
-      
+
       foreach ($ary as $prop) {
 	$margin = rand(-1000, 1000);
-	
+
 	$v['margin-'.$prop] = $margin;
-	
+
 	if (isset($v[$prop])) {
 	  $v[$prop] -= $margin;
 	}
       }
-      
+
       if (is_array($v[0])) {
 	$this->mutate_margins($v[0]);
       }
     }
   }
-  
+
   function mutate_styles(&$a = false) {
     if ($a === false) {
       $a = &$this->content;
     }
-    
+
     foreach ($a as &$v) {
       $content = $v[0];
       unset($v[0]);
       $styles = array_splice($v, 0, rand(0, 6));
       $v[0] = $content;
-      
+
       $id_or_class = rand(0,1);
       $param = $id_or_class ? "id" : "class";
       $prefix = $id_or_class ? "#" : ".";
       $genname = "zz-".base_convert(rand(1,999999999), 10, 36);
-      
+
       if ($styles || rand(0,1)) {
         $this->style .= $prefix.$genname."{";
         $this->style .= $this->rand_whitespace();
-      
+
         foreach ($styles as $k => $val) {
           if (is_int($val)) {
             $val = "".$val."px";
@@ -241,9 +241,9 @@ class CzaksCaptcha {
         $this->style .= "}";
         $this->style .= $this->rand_whitespace();
       }
-      
+
       $v[$param] = $genname;
-    
+
       if (is_array($v[0])) {
 	$this->mutate_styles($v[0]);
       }
@@ -252,19 +252,19 @@ class CzaksCaptcha {
 
   function to_html(&$a = false) {
     $inside = true;
-    
+
     if ($a === false) {
       if ($this->style) {
-        echo "<style type='text/css'>";
+        echo "<style type=\"text/css\">";
         echo $this->style;
         echo "</style>";
       }
-    
+
       echo "<div style='position: relative; width: ".$this->width."px; height: ".$this->height."px; overflow: hidden; background-color: ".$this->color."'>";
       $a = &$this->content;
       $inside = false;
     }
-    
+
     foreach ($a as &$v) {
       $letter = $v[0];
 
@@ -272,7 +272,7 @@ class CzaksCaptcha {
 
       echo "<div";
       echo $this->rand_whitespace(1);
-      
+
       if (isset ($v['id'])) {
         echo "id='$v[id]'";
         echo $this->rand_whitespace(1);
@@ -282,11 +282,11 @@ class CzaksCaptcha {
       if (isset ($v['class'])) {
         echo "class='$v[class]'";
         echo $this->rand_whitespace(1);
-                
+
         unset ($v['class']);
       }
-      
-      echo "style='";
+
+      echo "style=\"";
 
       foreach ($v as $k => $val) {
         if (is_int($val)) {
@@ -300,16 +300,16 @@ class CzaksCaptcha {
 
       }
 
-      echo "'>";
+      echo "\">";
       echo $this->rand_whitespace();
-      
+
       if (is_array ($letter)) {
         $this->to_html($letter);
       }
       else {
         echo $letter;
       }
-      
+
       echo "</div>";
     }
 

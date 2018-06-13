@@ -1,6 +1,6 @@
 <?php
 	require 'info.php';
-	
+
 	function ukko_build($action, $settings) {
 		global $config;
 
@@ -20,13 +20,13 @@
 			file_write($settings['uri'] . '/index.html', $ukko->build());
 		}
 	}
-	
+
 	class ukko {
 		public $settings;
 		public function build($mod = false) {
 			global $config;
 			$boards = listBoards();
-			
+
 			$body = '';
 			$overflow = array();
 			$board = array(
@@ -53,32 +53,32 @@
 				} else {
 					$threads[$post['board']] += 1;
 				}
-	
-				if($count < $this->settings['thread_limit']) {				
-					openBoard($post['board']);			
+
+				if($count < $this->settings['thread_limit']) {
+					openBoard($post['board']);
 					$thread = new Thread($post, $mod ? '?/' : $config['root'], $mod);
 
 					$posts = prepare(sprintf("SELECT * FROM ``posts_%s`` WHERE `thread` = :id ORDER BY `id` DESC LIMIT :limit", $post['board']));
 					$posts->bindValue(':id', $post['id']);
 					$posts->bindValue(':limit', ($post['sticky'] ? $config['threads_preview_sticky'] : $config['threads_preview']), PDO::PARAM_INT);
 					$posts->execute() or error(db_error($posts));
-					
+
 					$num_images = 0;
 					while ($po = $posts->fetch()) {
 						if ($po['files'])
 							$num_images++;
-						
+
 						$thread->add(new Post($po, $mod ? '?/' : $config['root'], $mod));
-					
+
 					}
 					if ($posts->rowCount() == ($post['sticky'] ? $config['threads_preview_sticky'] : $config['threads_preview'])) {
 						$ct = prepare(sprintf("SELECT COUNT(`id`) as `num` FROM ``posts_%s`` WHERE `thread` = :thread UNION ALL SELECT COUNT(`id`) FROM ``posts_%s`` WHERE `files` IS NOT NULL AND `thread` = :thread", $post['board'], $post['board']));
 						$ct->bindValue(':thread', $post['id'], PDO::PARAM_INT);
 						$ct->execute() or error(db_error($count));
-						
+
 						$c = $ct->fetch();
 						$thread->omitted = $c['num'] - ($post['sticky'] ? $config['threads_preview_sticky'] : $config['threads_preview']);
-						
+
 						$c = $ct->fetch();
 						$thread->omitted_images = $c['num'] - $num_images;
 					}
@@ -98,8 +98,8 @@
 				$count += 1;
 			}
 
-			$body .= '<script> var overflow = ' . json_encode($overflow) . '</script>';
-			$body .= '<script type="text/javascript" src="/'.$this->settings['uri'].'/ukko.js"></script>';
+			$body .= '<script type="application/javascript"> var overflow = ' . json_encode($overflow) . '</script>';
+			$body .= '<script type="application/javascript" src="/'.$this->settings['uri'].'/ukko.js"></script>';
 
 			return Element('index.html', array(
 				'config' => $config,
@@ -110,7 +110,7 @@
 				'boardlist' => createBoardlist($mod),
 			));
 		}
-		
+
 	};
-	
+
 ?>

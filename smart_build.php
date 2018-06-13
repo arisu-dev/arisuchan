@@ -56,7 +56,7 @@ if ($reached) {
     header("Content-Type", "application/json");
   }
   elseif (preg_match('/\.js$/', $request)) {
-    header("Content-Type", "text/javascript; charset=utf-8");
+    header("Content-Type", "application/javascript; charset=utf-8");
   }
   elseif (preg_match('/\.xml$/', $request)) {
     header("Content-Type", "application/xml");
