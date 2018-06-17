@@ -3,25 +3,22 @@ arisuchan - A lightweight and full featured PHP imageboard.
 
 About
 ------------
-arisuchan is a free light-weight, fast, highly configurable and user-friendly
+arisuchan is a free light-weight, fast, highly configurable, and user-friendly
 imageboard software package. It is written in PHP and has few dependencies.
 
-arisuchan is a fork of (now defunc'd) [Tinyboard](http://github.com/savetheinternet/Tinyboard),
-a great imageboard package, actively building on it and adding a lot of features and other
-improvements.
+arisuchan is a fork of [vichan](https://github.com/vichan-devel/vichan/), which is still under active development.
 
-Support and announcements: https://arisuchan.jp/dev/
+Support and announcements for arisuchan development can be found at: https://arisuchan.jp/dev/
 
 Requirements
 ------------
-1.	PHP >= 5.4 (we still try to keep compatibility with php 5.3 as much as possible)
-        PHP 7.0 is explicitly supported.
+1.	PHP >= 5.4 (the software may continue to be compatible with PHP 5.x, but only PHP 7.x and newer is explicitly supported)
 2.	MySQL/MariaDB server
 3.	[mbstring](http://www.php.net/manual/en/mbstring.installation.php)
 4.	[PHP GD](http://www.php.net/manual/en/intro.image.php)
 5.	[PHP PDO](http://www.php.net/manual/en/intro.pdo.php)
 
-We try to make sure arisuchan is compatible with all major web servers and
+We try to ensure that arisuchan is compatible with all major web servers and
 operating systems. arisuchan does not include an Apache ```.htaccess``` file nor does
 it need one.
 
@@ -35,11 +32,12 @@ it need one.
 Contributing
 ------------
 You can contribute to arisuchan by:
-*	Developing patches/improvements/translations and using GitHub to submit pull requests
-*	Providing feedback and suggestions
-*	Writing/editing documentation
 
-If you need help developing a patch, please join our IRC channel.
+*	developing patches/improvements/translations and using GitHub to submit pull requests
+*	providing feedback and suggestions
+*	writing/editing documentation
+
+If you need help developing a patch, please reach out to us in our IRC channel at #arisuchan-dev on Freenode.
 
 Installation
 -------------
@@ -59,7 +57,7 @@ See also: [Configuration Basics](https://web.archive.org/web/20121003095922/http
 
 Upgrade
 -------
-To upgrade from any version of Tinyboard or arisuchan:
+To upgrade from any version of arisuchan:
 
 Either run ```git pull``` to update your files, if you used git, or
 backup your ```inc/instance-config.php```, replace all your files in place
@@ -68,20 +66,18 @@ finally run ```install.php```.
 
 Support
 --------
-arisuchan is still beta software -- there are bound to be bugs. If you find a
-bug, please report it.
 
 If you need assistance with installing, configuring, or using arisuchan, you may
 find support from a variety of sources:
 
 *	If you're unsure about how to enable or configure certain features, make
 	sure you have read the comments in ```inc/config.php```.
-*	Check out an [official arisuchan board](https://arisuchan.jp/dev/).
+*	Check out the [official arisuchan development board](https://arisuchan.jp/dev/).
 *	You can join arisuchan's IRC channel for support
 	[irc.freenode.net #arisuchan-dev](irc://irc.freenode.net/arisuchan-dev)
 
 ### Tinyboard support
-arisuchan is based on a Tinyboard, so both engines have very much in common. These
+arisuchan is based on a Tinyboard so both engines have very much in common. These
 links may be helpful for you as well:
 
 *	Tinyboard documentation can be found [here](https://web.archive.org/web/20121016074303/http://tinyboard.org/docs/?p=Main_Page).

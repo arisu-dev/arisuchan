@@ -420,13 +420,13 @@ fieldset label {
 }
 
 div.pages {
-	color: #89A;
-	background: #D6DAF0;
-	display: inline-block;
-	padding: 8px;
-	margin: 8px 0 4px 0;
-	border-right: 1px solid #B7C5D9;
-	border-bottom: 1px solid #B7C5D9;
+  color: #89A;
+  background: #D6DAF0;
+  display: inline-block;
+  padding: 8px;
+  margin: 8px 0 4px 0;
+  border-right: 1px solid #B7C5D9;
+  border-bottom: 1px solid #B7C5D9;
 }
 
 div.pages.top {
@@ -952,69 +952,69 @@ span.pln {
 }
 
 .clearfix {
-	display: block;
-	clear: both;
-	visibility: hidden;
-	overflow: hidden;
-	
-	font-size: 0px;
-	line-height: 0px;
-	
-	box-sizing: border-box;
-	border: none;
-	height: 0;
-	margin: 0;
-	padding: 0;
-	width: 100%;
-	zoom: 1;
+  display: block;
+  clear: both;
+  visibility: hidden;
+  overflow: hidden;
+
+  font-size: 0px;
+  line-height: 0px;
+
+  box-sizing: border-box;
+  border: none;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  zoom: 1;
 }
 
 /* === SPECIFIC PAGES & FEATURES === */
 
 /* Board List */
 div.boardlist {
-	margin-top: 3px;
-	
-	color: #89A;
-	font-size: 9pt;
+  margin-top: 3px;
+
+  color: #89A;
+  font-size: 9pt;
 }
 div.boardlist.bottom {
-	margin-top: 12px;
-	clear: both;
+  margin-top: 12px;
+  clear: both;
 }
 div.boardlist a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /* Threads */
 /* Thread Footer */
 #thread-interactions {
-	margin: 8px 0;
-	clear: both;
+  margin: 8px 0;
+  clear: both;
 }
 #thread-links {
-	float: left;
+  float: left;
 }
 #thread-links > a {
-	padding-left: none;
-	padding-right: 10px;
+  padding-left: none;
+  padding-right: 10px;
 }
 #thread-quick-reply {
-	display: none;
-	position: absolute;
-	left: 50%;
-	right: 50%;
-	text-align: center;
-	width: 100px;
-	margin-left: -50px;
+  display: none;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  text-align: center;
+  width: 100px;
+  margin-left: -50px;
 }
 #thread_stats {
-	float: right;
+  float: right;
 }
 
 #post-moderation-fields {
-	float: right;
-	text-align: right;
+  float: right;
+  text-align: right;
 }
 #delete-fields {
 }
@@ -1026,29 +1026,29 @@ div.boardlist a {
 /* threadwatcher */
 
 #watchlist {
-	display: none;
-	max-height: 250px;
-	overflow: auto;
-	border: 1px solid;
-	border-style: none solid solid none;
-	width: 50%;
-	margin: 0 auto;
-	margin-bottom: 10px;
+  display: none;
+  max-height: 250px;
+  overflow: auto;
+  border: 1px solid;
+  border-style: none solid solid none;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
 
 .watchlist-inner, .watchlist-controls {
-	margin: 0 auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	text-align: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 #watchlist-toggle, .watchThread, .watchlist-remove, #clearList, #clearGhosts {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 #youtube-size input {
-	width: 50px;
+  width: 50px;
 }
 
 /* File selector */
@@ -1199,10 +1199,418 @@ table.fileboard .intro a {
   position: absolute;
 }
 .own_post {
-	font-style: italic;
-	font-weight: normal;
-	opacity: .666;
+  font-style: italic;
+  font-weight: normal;
+  opacity: .666;
 }
 div.mix {
-	display: inline-block;
+  display: inline-block;
+}
+
+/* inline styles removed from templates: */
+
+.inline-block{
+  display: inline-block;
+}
+
+textarea.license{
+  width:700px;
+  height:370px;
+  margin:auto;
+  display:block;
+  background:white;
+  color:black;
+}
+
+.display-none{
+  display: none;
+}
+
+pre.code-debug{
+  white-space: pre-wrap;
+  font-size: 10px;
+}
+
+.check-requirements{
+  max-width:700px;
+  margin:auto;
+}
+
+.check-requirements .modlog{
+  margin-top:10px;
+  max-width:600px;
+}
+
+table.mod-user{
+  width:600px;
+}
+
+.check-requirements .fa-check{
+  font-size:11pt;
+  color:#090;
+  margin: 0 4px;
+  font-size: 16px;
+}
+
+.check-requirements .fa-exclamation{
+  font-size:11pt;
+  color:#d0;
+  margin: 0 4px;
+  font-size: 16px;
+}
+
+.check-requirements .fa-warning{
+  font-size:11pt;
+  color:#f80;
+  margin: 0 4px;
+  font-size: 16px;
+}
+
+.move ul{
+  list-style:none;
+  padding:0;
+}
+
+form.mod-news{
+  margin:0;
+}
+
+.no-margin{
+  margin:0;
+}
+
+form.noticeboard{
+  margin:0;
+}
+
+#bans table{
+  width:400px;
+  margin-bottom:10px;
+  border-bottom:1px solid #ddd;
+  padding:5px;
+}
+
+.mod-news textarea{
+  width:100%;
+  height:100px
+}
+
+.login table{
+  margin-top:25px;
+}
+
+.check-requirements ul li{
+  margin-bottom:5px;
+}
+.theme-installation-message{
+  border:1px dashed maroon;
+  padding:20px;
+  margin:auto;
+  max-width:800px;
+}
+
+.sql textarea{
+  display:block;
+  margin:5px auto;
+  width:90%;
+  max-width:600px;
+}
+
+.sql input submit{
+  display:block;
+  margin:5px auto;
+}
+
+.color-red{
+  color: red;
+}
+
+.float-none{
+  float: none;
+}
+
+.float-right{
+  float: right;
+}
+
+.mod-themes .active-theme{
+  border:2px solid red;
+  padding:4px;
+}
+
+.mod-themes ul{
+  padding:0 20px;
+}
+
+.mod-user-create{
+  padding:0;
+  text-align:center;
+  list-style:none;
+}
+
+.mod-user small{
+  font-weight:normal;
+}
+
+.width-auto{
+ width:auto;
+}
+
+.no-underline{
+  text-decoration: none;
+}
+
+.mod-user-group{
+  padding:5px 8px;
+  list-style:none;
+}
+
+.mod-user-boards{
+  padding:0 5px;
+  list-style:none;
+}
+
+.tr-hr{
+  height:40px;
+}
+
+.mod-themes .image-margin{
+  margin: 4px;
+}
+
+.text-align-left{
+  text-align: left;
+}
+
+.inline{
+  display: inline;
+}
+
+.slightly-larger{
+  font-size:1.1em
+}
+
+.search-form-message{
+  font-size:8pt;
+  margin:5px;
+}
+
+.margin-top{
+  margin-top:15px;
+}
+.noticeboard textarea{
+  width:100%;
+  height:100px;
+}
+
+.textarea-box{
+  height:500px;
+  width:500px;
+}
+
+.slight-margin{
+  margin-left:2px;
+}
+
+.minor-margin{
+  margin-left:5px;
+}
+
+.ban span{
+  float:right;
+  padding:2px
+}
+
+.float-right{
+  float:right;
+}
+
+.float-left{
+  float: left;
+}
+
+.margin-auto{
+  margin:auto;
+}
+
+.text-align-center{
+  text-align: center;
+}
+
+.bold{
+  font-weight:bold;
+}
+
+.debug{
+  white-space:pre-wrap;
+  font-size: 10px;
+}
+
+.check-requirements .modlog{
+  width:700px;
+  margin:auto;
+}
+
+.modlog-thin{
+  width:1%;
+  margin:auto;
+}
+
+form table.modlog{
+  width:1%;
+  white-space:nowrap;
+  margin:auto;
+}
+
+.restricted-width-100{
+  max-width:100px;
+}
+
+.restricted-width-200{
+  max-width:200px;
+}
+
+.restricted-width-250{
+  max-width:250px;
+}
+
+.nowrap{
+  white-space:nowrap;
+}
+
+.line-through{
+  text-decoration:line-through;
+}
+
+.modlog-board, .modlog-thread{
+  width:90px;
+}
+
+.break-word{
+  word-wrap: break-word;
+}
+
+#recaptcha_area {
+  float: none !important;
+  padding: 0 !important;
+}
+
+#recaptcha_logo, #recaptcha_privacy {
+  display: none;
+}
+
+#recaptcha_table {
+  border: none !important;
+}
+
+#recaptcha_table tr:first-child {
+  height: auto;
+}
+
+.recaptchatable img {
+  float: none !important;
+}
+
+#recaptcha_response_field {
+  font-size: 10pt !important;
+  border: 1px solid #a9a9a9 !important;
+  padding: 1px !important;
+}
+
+td.recaptcha_image_cell {
+  background: transparent !important;
+}
+
+.recaptchatable, #recaptcha_area tr, #recaptcha_area td, #recaptcha_area th {
+  padding: 0 !important;
+}
+
+.ban-appeals table:first-child{
+  margin: 5px 0;
+}
+
+.ban-appeals table:nth-child(2){
+  margin: 10px 0;
+}
+
+.ban-form ul{
+  list-style:none;
+  padding:2px 5px;
+}
+
+.ban-form label{
+  display:inline;
+}
+
+.ban-list table{
+  width:100%;
+}
+
+.mod-board{
+  padding:0;
+  text-align:center;
+  list-style:none;
+}
+
+.config-editor ul{
+  padding:0;
+  text-align:center;
+  list-style:none;
+}
+
+.mod-rebuild li:first-child{
+  margin-bottom:8px;
+}
+
+.pm ul{
+  list-style:none;
+  text-align:center;
+  padding:0;
+}
+
+.full-width{
+  width:100%;
+}
+
+form.mod-rebuild{
+  width:300px;
+  margin:auto;
+}
+
+fieldset.search-results{
+  margin-bottom:20px;
+}
+
+.pm li{
+  padding:5px 0;
+}
+
+.config-editor .break-word{
+  word-wrap:break-word;
+  width:50%;
+}
+
+div.config-editor-php{
+  max-width:800px;
+  margin:auto;
+}
+
+.config-editor-php textarea{
+  margin:auto;
+  width:100%;
+  height:500px
+}
+
+.config-editor-php .read-only{
+  background:#eee;
+}
+
+.config-editor-php form ul{
+  padding:0;
+  text-align:center;
+  list-style:none;
+}
+
+.clear-both{
+  clear: both;
 }
