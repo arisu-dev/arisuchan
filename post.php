@@ -402,7 +402,7 @@ if (isset($_POST['delete'])) {
 		]));
 		if ($resp !== '1') {
                         error($config['error']['captcha'] .
-			'<script type="application/javascript">if (actually_load_captcha !== undefined) actually_load_captcha("'.$config['captcha']['provider_get'].'", "'.$config['captcha']['extra'].'");</script>');
+			'<script type=\"application/javascript\">if (actually_load_captcha !== undefined) actually_load_captcha("'.$config['captcha']['provider_get'].'", "'.$config['captcha']['extra'].'");</script>');
 		}
 	}
 }
